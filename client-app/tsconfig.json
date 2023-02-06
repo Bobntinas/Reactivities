@@ -1,6 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
+    "typeRoots": ["node_modules/yup"],
     "lib": [
       "dom",
       "dom.iterable",

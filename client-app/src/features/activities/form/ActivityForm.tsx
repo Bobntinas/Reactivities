@@ -2,7 +2,7 @@
 import { act } from "@testing-library/react";
 import { observer } from "mobx-react-lite";
 import React, { useEffect, useState } from "react";
-import { Link, useHistory, useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { Button, Header, Segment } from "semantic-ui-react";
 import LoadingComponent from "../../../app/layout/LoadingComponent";
 import { useStore } from "../../../app/stores/store";
@@ -18,7 +18,7 @@ import { ActivityFormValues } from "../../../app/models/activity";
 
 
 export default observer(function ActivityForm() {
-    const history = useHistory();
+    const navigate = useNavigate();
     const { activityStore } = useStore();
     const { createActivity, updateActivity, loadActivity, loadingInitial } = activityStore;
     const { id } = useParams<{ id: string }>();
@@ -46,9 +46,9 @@ export default observer(function ActivityForm() {
                 ...activity,
                 id: uuid()
             };
-            createActivity(newActivity).then(() => history.push(`/activities/${newActivity.id}`))
+            createActivity(newActivity).then(() => navigate(`/activities/${newActivity.id}`))
         } else {
-            updateActivity(activity).then(() => history.push(`/activities/${activity.id}`))
+            updateActivity(activity).then(() => navigate(`/activities/${activity.id}`))
         }
     }
 
