@@ -1,4 +1,3 @@
-import { profile } from "console";
 import { Form, Formik } from "formik";
 import { observer } from "mobx-react-lite";
 import React from "react";
